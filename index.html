@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title> Simple Hangman Game</title>
+    
+    <!--external links-->
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Delius+Unicase|Open+Sans+Condensed:300|Ranga|Shrikhand" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
+  </head>
+
+<body>
+    <div class="name">
+        <!--headers-->
+        <h1>Hangman Basic</h1>
+        Type a letter and Guess the Word.
+        <input id="guess" type="text">
+        <input type="button" value="guess" onclick="guessOne()"/>
+        <input type="button" value="quit" onclick="quit()"/>
+        <p id="message">&nbsp;</p>
+        <p>
+        <font size="+3"><span id="answer">puzzle loading..</span></font>
+        </p>
+
+        <script>
+        var Names = [
+        "Daenerys", "JonSnow", "NightKing", "Tywin", "Bran"];
+        var word="";
+        var answerArray = [];
+        function init(){
+            word=Names[Math.floor(Math.random()*Names.length)];
+            answerArray = [];
+            for (var i=0; i<Names.length;i++)
+            {
+                answerArray[i]="_";
+            }
+            document.getElementById("answer").innerHTML=answerArray.join("");
+            document.getElementById("message").innerHTML="Type a letter then press guess.  Press Stop to end game."
+        }
+init();
+function guessOne() {
+    var guess = document.getElementById("guess").value;
+    var showThisMessage = "";
+    if (guess.length !==1){
+        showThisMessage ="Please enter a letter";
+        else
+            (var=0;i<word.length;++) {
+
+                if(word[i]===guess){
+                    answerArray[i]=guess;
+                    showThismessage = "You got it!"+guess+"is in answer.";
+
+                }
+            }
+if (answerArray[i]==="_"){remaining_letters+=1;
+}
+    }
+    if(remaining_letters==0){
+        showThismessage="Correct! Game of Thrones Rocks!";    
+    }
+    if (showThismessage===""){
+showThismessage="Guess Again"
+    }
+    document.getElementById("answer").innerHTML=answerArray.join("");
+    document.getElementById("guess").value="";
+    document.getElementById("message").innerHTML=showThismessage;
+}
+function quit(){
+    document.getElementById("message").innerHTML="The word was"+word;
+    for(var j=0; j<word.length; j++)
+        {answerArray[j]=word[j]
+        }
+        document.getElementById("answer").innerHTML=answerArray.join("");
+}
+</script>
+    
+</body>
+
+</html>
