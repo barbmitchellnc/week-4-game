@@ -4,79 +4,44 @@
 <head>
     <meta charset="utf-8">
     <title> Simple Hangman Game</title>
-    
     <!--external links-->
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link href="https://fonts.googleapis.com/css?family=Delius+Unicase|Open+Sans+Condensed:300|Ranga|Shrikhand" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    
-  </head>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
 
 <body>
-    <div class="name">
-        <!--headers-->
-        <h1>Hangman Basic</h1>
-        Type a letter and Guess the Word.
-        <input id="guess" type="text">
-        <input type="button" value="guess" onclick="guessOne()"/>
-        <input type="button" value="quit" onclick="quit()"/>
-        <p id="message">&nbsp;</p>
-        <p>
-        <font size="+3"><span id="answer">puzzle loading..</span></font>
-        </p>
+    <div class="container">
+        <div class="header">
+            <!--headers-->
+            <h1>Crystal Collector</h1>
+            <p> You will be given a random number at the start of the game.<br> When you click one of the crystals, a specific amount will be added to the total. Each Crystal's value changes each game.</p>
+            <p> Win by matching the total score to the random number. <br>Go over and you lose the game. Good Luck!</p>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2 text-center" style="background:teal; width:25%; border-style: double;border-width: thick; border-color:purple ">
+            <h2 >Number to Match<h2>
+        <div id="random"></div>
+        </div>
+       
+            <div class="col-md-2col-sm-2 col-xs-2 text-center" style="background:teal; width:25%; border-style: double;border-width: thick; border-color:purple; margin-left: 25px">
+                            <h2> <span id="outcome"  style="color: purple"></span> <br>Wins: <span id="wins" style="color:purple">0</span><br />Loss: <span id="losses" style="color:purple">0</span></h2>     
+        </div>
+<div class="row">
+        <div class="col-md-8 col-sm-8 col-xs-8" style="margin-top: 15px;">
+        <button id="blue" class= "col-md-2 col-sm-2 col-xs-2" value=0><img src="assets/images/blue.jpg"></button>
+        <button id="green" class =  "col-md-2 col-sm-2 col-xs-2" value=0><img src="assets/images/emerald.jpg"></button>
+        <button id="purple" class= "col-md-2 col-sm-2 col-xs-2" value=0><img src="assets/images/purple.jpg"></button>
+        <button id="red" class= "col-md-2 col-sm-2 col-xs-2" value=0><img src="assets/images/red.jpg"></button>
+        </div>
+        </div>
+        <h3 style="background:teal; color:white; width:25%; margin-top:15px; background-color: purple">Total Score<h3>
+       <div id="totalscore" >
+        
 
-        <script>
-        var Names = [
-        "Daenerys", "JonSnow", "NightKing", "Tywin", "Bran"];
-        var word="";
-        var answerArray = [];
-        function init(){
-            word=Names[Math.floor(Math.random()*Names.length)];
-            answerArray = [];
-            for (var i=0; i<Names.length;i++)
-            {
-                answerArray[i]="_";
-            }
-            document.getElementById("answer").innerHTML=answerArray.join("");
-            document.getElementById("message").innerHTML="Type a letter then press guess.  Press Stop to end game."
-        }
-init();
-function guessOne() {
-    var guess = document.getElementById("guess").value;
-    var showThisMessage = "";
-    if (guess.length !==1){
-        showThisMessage ="Please enter a letter";
-        else
-            (var=0;i<word.length;++) {
-
-                if(word[i]===guess){
-                    answerArray[i]=guess;
-                    showThismessage = "You got it!"+guess+"is in answer.";
-
-                }
-            }
-if (answerArray[i]==="_"){remaining_letters+=1;
-}
-    }
-    if(remaining_letters==0){
-        showThismessage="Correct! Game of Thrones Rocks!";    
-    }
-    if (showThismessage===""){
-showThismessage="Guess Again"
-    }
-    document.getElementById("answer").innerHTML=answerArray.join("");
-    document.getElementById("guess").value="";
-    document.getElementById("message").innerHTML=showThismessage;
-}
-function quit(){
-    document.getElementById("message").innerHTML="The word was"+word;
-    for(var j=0; j<word.length; j++)
-        {answerArray[j]=word[j]
-        }
-        document.getElementById("answer").innerHTML=answerArray.join("");
-}
-</script>
-    
+</div>
+</div>
 </body>
 
 </html>
